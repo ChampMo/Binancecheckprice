@@ -1,13 +1,12 @@
-
 from binance import Client
 from songline import Sendline
 import time
 
-token = 'Ae752Rf7IfI0O2o6QaKzfcTHebMwp52wBoVY5iBbYQo'
+token = 'Your_Token'
 messenger = Sendline(token)
 
-api_key = 'Bw7ckMJxW7V0cQy5nEZjO0IdfK2HNf46iwb62ntod6BOC9tiv8ZyRH9NTAPiUCwm'
-api_secret = 'VkVJwCiszAOG5MLr4OHNW9QrzUcvyMHnlRGr2BZ92ioCRHhPiRdoAeLsKBB4XGVz'
+api_key = 'Your_api_key'
+api_secret = 'Your_api_secret'
 client = Client(api_key, api_secret)
 
 # get all symbol prices
@@ -59,7 +58,7 @@ def CheckPrice():
                
      v_result.set(alltext)
      print('----')
-     R1.after(50000,CheckPrice)
+     R1.after(500,CheckPrice)
      
 #หาเหรียญ
 def FindCoin():
@@ -82,7 +81,8 @@ def FindCoin():
                  print('เหรียญ: {} ราคา: {:,.2f} บาท'.format(N,cal))
                  text2 = 'เหรียญ {}  ราคา {:,.2f} บาท\n\n'.format(N,cal)
      v2_result.set(text2)
-     R2.after(50000,FindCoin)
+     R2.after(500,FindCoin)
+     
 #SendLine
 def SendLine():
     coin = TI1.get()
@@ -103,7 +103,7 @@ def SendLine():
                 print('เหรียญ: {} ราคา: {:,.2f} บาท'.format(N, cal))
                 text2 = 'เหรียญ {}  ราคา {:,.2f} บาท\n\n'.format(N, cal)
                 text3 = '\nเหรียญ {} \nราคา {:,.2f} บาท'.format(N, cal)
-            #     alltext2 += text2
+                    
     v2_result.set(text2)
     messenger.sendtext(text3)
 
@@ -125,9 +125,6 @@ L = ttk.Label(GUI,text ='',font = FONT4)
 L.pack()
 L1 = ttk.Label(GUI,text ='ราคาเหรียญ',font = FONT1)
 L1.pack()
-
-#B1 = ttk.Button(GUI,text='Check!',command= CheckPrice)
-#B1.pack(ipadx=100,ipady=5)
 
 L2 = ttk.Label(GUI,text ='',font = FONT1)
 L2.pack()
