@@ -1,1 +1,1 @@
-# Binancecheckprice
+# BinanceCheckPrice
