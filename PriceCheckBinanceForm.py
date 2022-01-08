@@ -147,12 +147,12 @@ L4 = ttk.Label(GUI,text ='',font = FONT3)
 L4.pack()
 
 B2 = ttk.Button(GUI,text='Check!',command= FindCoin)
-B2.pack(ipadx=100,ipady=5)
+B2.pack(ipadx=100,ipady=6)
 L5 = ttk.Label(GUI,text ='',font = FONT4)
 L5.pack()
 
 B3 = ttk.Button(GUI,text='SendLine',command= SendLine)
-B3.pack(ipadx=100,ipady=5)
+B3.pack(ipadx=100,ipady=6)
 
 
 GUI.mainloop()
