@@ -60,26 +60,30 @@ def CheckPrice():
      
 #หาเหรียญ
 def FindCoin():
+     try:
+         coin = TI1.get()
+         COIN = coin.upper()
+         COINUSDT = COIN + 'USDT'
+         Tcoin = [COINUSDT]
 
-     coin = TI1.get()
-     COIN = coin.upper()
-     COINUSDT = COIN + 'USDT'
-     Tcoin = [COINUSDT]
+         prices = client.get_all_tickers()
 
-     prices = client.get_all_tickers()
-
-     for p in prices:
-          for c in Tcoin:
-             sym = c
-             if p['symbol'] == sym:
-                 pc = float(p['price'])
-                 rate = 33.20
-                 cal = pc*rate
-                 N = COIN
-                 print('เหรียญ: {} ราคา: {:,.2f} บาท'.format(N,cal))
-                 text2 = 'เหรียญ {}  ราคา {:,.2f} บาท\n\n'.format(N,cal)
-     v2_result.set(text2)
-     R2.after(500,FindCoin)
+         for p in prices:
+              for c in Tcoin:
+                 sym = c
+                 if p['symbol'] == sym:
+                     pc = float(p['price'])
+                     rate = 33.20
+                     cal = pc*rate
+                     N = COIN
+                     print('เหรียญ: {} ราคา: {:,.2f} บาท'.format(N,cal))
+                     text2 = 'เหรียญ {}  ราคา {:,.2f} บาท\n\n'.format(N,cal)
+         v2_result.set(text2)
+         R2.after(50000,FindCoin)
+    except:
+        text2 = 'โปรดใส่ชื่อเหรียญให้ถูกต้อง\n\n'
+        v2_result.set(text2)
+     
 #SendLine
 def SendLine():
     coin = TI1.get()
